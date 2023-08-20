@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialCounterStage = { showCart:false,items:[],totalQuantity:0 };
+const initialCounterStage = { showCart:false,items:[],totalQuantity:0,notification:null };
 const cartSlice = createSlice({
   name: "cart",
   initialState: initialCounterStage,
@@ -34,6 +34,13 @@ const cartSlice = createSlice({
       }else{
         existingItem.quantity--
         existingItem.totalPrice=existingItem.totalPrice-existingItem.price
+      }
+    },
+    showNotification(state,action){
+      state.notification={
+        status:action.payload.status,
+        title:action.payload.title,
+        message:action.payload.message
       }
     }
   },
